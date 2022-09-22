@@ -1,8 +1,5 @@
 
-// let carritoContenedor = document.getElementById("carritoContenedor")
-
 const carritoDeCompras = []
-const carrito1 = []
 
 const carritoIndex = (productoId)=>{
 
@@ -33,7 +30,6 @@ const carritoIndex = (productoId)=>{
 
 
 let carritoContenedor=document.getElementById("carritoContenedor");
-// let carro=localStorage.getItem("carritoDeCompras")
 let carritoStorage = localStorage.getItem("carritoDeCompras");
 let carrito = [];
 
@@ -42,8 +38,9 @@ if (carritoStorage) {
 }
 
 let carritoSubtotal = 0;
+let carritoEnvio = 0;
+let carritoTotal = 0;
 
-// alert(carrito)
 for (const producto of carrito) {
     let div = document.createElement("div");
     div.innerHTML = `<div>
@@ -59,22 +56,17 @@ for (const producto of carrito) {
     div.id="carritoProduct";
     carritoContenedor.append(div);
     carritoSubtotal = carritoSubtotal + producto.precio;
-    // carritoEnvio = carrito.length * 50;
-    carritoEnvio = 50;
+    carritoEnvio = carrito.length * 50;
     carritoTotal = carritoSubtotal + carritoEnvio;
+};
 
-
-    };
-
-console.log(carritoSubtotal);
+//RENDERIZA RESUMEN DE CARRITO
 const totalValue = document.getElementById("totalValue")
 let div = document.createElement("div");
     div.innerHTML = `<p>$${carritoSubtotal} </p>
                     <p>$${carritoEnvio} </p>
                     <p class="p-total-value">$${carritoTotal}</p>`;
     totalValue.append(div);
-
-
 
 //BOTON PARA VACIAR CARRITO
   let botonVaciarCarrito = document.getElementById("btnVaciarCarrito");
